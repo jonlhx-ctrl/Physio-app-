@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Physio Voice Intake Assistant</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero glass">
+        <div>
+          <p class="eyebrow">AI-Assisted Initial Assessment</p>
+          <h1 id="titleText">Physio Voice Intake Assistant</h1>
+          <p id="subtitleText">
+            Patients can type or speak. The assistant asks structured questions and prepares a clinician-ready summary.
+          </p>
+        </div>
+        <div class="hero-controls">
+          <label for="languageSelect" id="languageLabel">Language</label>
+          <select id="languageSelect" aria-label="Select language">
+            <option value="en-US">English</option>
+            <option value="es-ES">Español</option>
+            <option value="fr-FR">Français</option>
+            <option value="de-DE">Deutsch</option>
+            <option value="hi-IN">हिन्दी</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="grid-layout">
+        <article class="panel chat-panel glass" aria-labelledby="chat-title">
+          <div class="panel-heading">
+            <h2 id="chat-title">Patient Conversation</h2>
+            <div class="voice-actions">
+              <button id="listenBtn" type="button" class="secondary-button">🎙️ Speak</button>
+              <button id="ttsBtn" type="button" class="secondary-button">🔊 Voice replies: On</button>
+            </div>
+          </div>
+          <p class="panel-help" id="chatHelp">You can answer by text or voice. I will clarify your condition in detail.</p>
+
+          <div id="chatLog" class="chat-log" aria-live="polite"></div>
+
+          <form id="chatForm" class="chat-form">
+            <label for="patientInput" class="sr-only">Describe your symptoms</label>
+            <textarea
+              id="patientInput"
+              name="message"
+              rows="3"
+              placeholder="Example: I have sharp pain in my right shoulder when lifting my arm"
+              required
+            ></textarea>
+            <div class="form-actions">
+              <button type="submit" id="sendBtn">Send</button>
+            </div>
+          </form>
+        </article>
+
+        <aside class="panel summary-panel glass" aria-labelledby="summary-title">
+          <h2 id="summary-title">Physiotherapist Summary</h2>
+          <p class="panel-help">Auto-generated summary and likely issue hypotheses from intake.</p>
+          <div id="summaryContent" class="summary-content">
+            <p>Start chatting to generate a structured intake summary.</p>
+          </div>
+          <button id="copySummaryBtn" class="secondary-button" type="button">Copy summary</button>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
